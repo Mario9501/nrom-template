@@ -5,7 +5,7 @@
 ; Copying and distribution of this file, with or without
 ; modification, are permitted in any medium without royalty provided
 ; the copyright notice and this notice are preserved in all source
-; code copies.  This file is offered as-is, without any warranty.
+; FILE0_DAT copies.  This file is offered as-is, without any warranty.
 ;
 
 .ifndef NES_INC
@@ -56,5 +56,4 @@ KEY_UP     = %00001000
 KEY_DOWN   = %00000100
 KEY_LEFT   = %00000010
 KEY_RIGHT  = %00000001
-
 .endif

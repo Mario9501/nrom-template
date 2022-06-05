@@ -23,7 +23,7 @@ WALK_BRAKE = 8  ; stopping acceleration in 1/256 px/frame^2
 LEFT_WALL = 32
 RIGHT_WALL = 224
 
-.segment "CODE"
+.segment "FILE0_DAT"
 
 .proc init_player
   lda #0

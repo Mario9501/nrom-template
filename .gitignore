@@ -14,8 +14,11 @@
 __pycache__/
 *.pyc
 nrom-template.nes
-
+*.exe
+*.fds
 # this is NES homebrew, not DSiWare
 *.DS_Store
 
 
+.vscode/configurationCache.log
+.vscode/settings.json

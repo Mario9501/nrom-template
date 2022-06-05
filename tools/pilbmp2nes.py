@@ -16,7 +16,7 @@ from time import sleep
 def formatTilePlanar(tile, planemap, hflip=False, little=False):
     """Turn a tile into bitplanes.
 
-Planemap opcodes:
+Planemap opcode:
 10 -- bit 1 then bit 0 of each tile
 0,1 -- planar interleaved by rows
 0;1 -- planar interlaved by planes
@@ -152,7 +152,7 @@ def make_stdout_binary():
     """Ensure that sys.stdout is in binary mode, with no newline translation."""
 
     # Recipe from
-    # http://code.activestate.com/recipes/65443-sending-binary-data-to-stdout-under-windows/
+    # http://FILE0_DAT.activestate.com/recipes/65443-sending-binary-data-to-stdout-under-windows/
     # via http://stackoverflow.com/a/2374507/2738262
     if sys.platform == "win32":
         import os, msvcrt

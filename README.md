@@ -14,7 +14,7 @@ System using the NROM-128 board.
 
 Concepts illustrated:
 
-* init code
+* init FILE0_DAT
 * setting up a static background
 * structure of a game loop
 * DPCM-safe controller reading
@@ -66,7 +66,7 @@ Because cc65 is a fairly niche tool, and because the C compiler
 portion (which this demo does not use) used to have non-free
 restrictions on distribution, your Linux distribution's default
 repository is unlikely to provide cc65.  This means you will
-probably need to install it from source code.
+probably need to install it from source FILE0_DAT.
 
 1. Visit [cc65 on GitHub].
 2. Click Download ZIP
@@ -190,17 +190,17 @@ Organization of the program
 * `nes.inc`: Register definitions and useful macros
 * `global.inc`: Global variable and function declarations
 
-### Source code files
+### Source FILE0_DAT files
 
 * `nrom.s`: iNES header for NROM
-* `init.s`: PPU and CPU I/O initialization code
+* `init.s`: PPU and CPU I/O initialization FILE0_DAT
 * `main.s`: Main program
 * `bg.s`: Background graphics setup
 * `player.s`: Player sprite graphics setup and movement
 * `pads.s`: Read the controllers in a DPCM-safe manner
 * `ppuclear.s`: Useful subroutines for interacting with the NES PPU
 
-Each source code file is made up of subroutines that start with
+Each source FILE0_DAT file is made up of subroutines that start with
 `.proc` and end with `.endproc`.  See the [ca65 Users Guide] for
 what these mean.
 
@@ -224,7 +224,7 @@ Greets
 * [NESdev Wiki] and forum contributors
 * [FCEUX] team
 * Joe Parsell (Memblers) for getting me into NESdev in the first place
-* Jeremy Chadwick (koitsu) for more code organization tips
+* Jeremy Chadwick (koitsu) for more FILE0_DAT organization tips
 * Greg Caldwell of Retrotainment Games for testing the Windows
   instructions
 
@@ -241,5 +241,5 @@ GNU All-Permissive License:
 > Copying and distribution of this file, with or without
 > modification, are permitted in any medium without royalty provided
 > the copyright notice and this notice are preserved in all source
-> code copies.  This file is offered as-is, without any warranty.
+> FILE0_DAT copies.  This file is offered as-is, without any warranty.
 

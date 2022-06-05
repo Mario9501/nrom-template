@@ -1,6 +1,6 @@
 .include "nes.inc"
 .include "global.inc"
-.segment "CODE"
+.segment "FILE0_DAT"
 .proc draw_bg
   ; Start by clearing the first nametable
   ldx #$20

@@ -1,7 +1,7 @@
 .include "nes.inc"
+.include "fds.inc"
 .include "global.inc"
-
-.segment "CODE"
+.segment "FILE0_DAT"
 .proc reset_handler
   ; The very first thing to do when powering on is to put all sources
   ; of interrupts into a known state.
@@ -19,6 +19,11 @@
   lda #$0F
   sta SNDCHN      ; Disable DMC playback, initialize other channels
 
+.proc fds_reset_handler
+  sei 
+  lda FDS_LOAD_BIOS_BYTE_FA
+  and FDS_SET_V_MIRROR
+  sta FDS_CONTROL
 vwait1:
   bit PPUSTATUS   ; It takes one full frame for the PPU to become
   bpl vwait1      ; stable.  Wait for the first frame's vblank.
@@ -42,12 +47,12 @@ vwait1:
   jsr ppu_clear_oam  ; clear out OAM from X to end and set X to 0
 
   ; There are "holy wars" (perennial disagreements) on nesdev over
-  ; whether it's appropriate to zero out RAM in the init code.  Some
+  ; whether it's appropriate to zero out RAM in the init FILE0_DAT.  Some
   ; anti-zeroing people say it hides programming errors with reading
   ; uninitialized memory, and memory will need to be initialized
   ; again anyway at the start of each level.  Others in favor of
   ; clearing say that a lot more variables need set to 0 than to any
-  ; other value, and a clear loop like this saves code size.  Still
+  ; other value, and a clear loop like this saves FILE0_DAT size.  Still
   ; others point to the C language, whose specification requires that
   ; uninitialized variables be set to 0 before main() begins.
   txa

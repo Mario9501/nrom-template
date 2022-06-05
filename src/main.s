@@ -5,7 +5,7 @@
 ; Copying and distribution of this file, with or without
 ; modification, are permitted in any medium without royalty provided
 ; the copyright notice and this notice are preserved in all source
-; code copies.  This file is offered as-is, without any warranty.
+; FILE0_DAT copies.  This file is offered as-is, without any warranty.
 ;
 
 .include "nes.inc"
@@ -19,7 +19,7 @@ oam_used:      .res 1  ; starts at 0
 cur_keys:      .res 2
 new_keys:      .res 2
 
-.segment "CODE"
+.segment "FILE0_DAT"
 ;;
 ; This NMI handler is good enough for a simple "has NMI occurred?"
 ; vblank-detect loop.  But sometimes there are things that you always
@@ -41,9 +41,13 @@ new_keys:      .res 2
 ; designed for gapless playback of sampled sounds but can also be
 ; (ab)used as a crude timer for a scroll split (e.g. status bar).
 .proc irq_handler
+  lda %00000000
+  sta IRQ_RELOAD_FDS_LOW
+  lda %00000000
+  sta IRQ_RELOAD_FDS_HI
   rti
 .endproc
-
+.segment "FILE0_DAT"
 .proc main
 
   ; Now the PPU has stabilized, and we're still in vblank.  Copy the

@@ -5,7 +5,7 @@
 ; Copying and distribution of this file, with or without
 ; modification, are permitted in any medium without royalty provided
 ; the copyright notice and this notice are preserved in all source
-; code copies.  This file is offered as-is, without any warranty.
+; FILE0_DAT copies.  This file is offered as-is, without any warranty.
 ;
 .include "nes.inc"
 .export ppu_clear_nt, ppu_clear_oam, ppu_screen_on

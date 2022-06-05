@@ -10,13 +10,13 @@
 #
 
 # These are used in the title of the NES program and the zip file.
-title = nrom-template
-version = 0.05
+title = FDS_test_rom
+version = 0.01
 
 # Space-separated list of assembly language files that make up the
 # PRG ROM.  If it gets too long for one line, you can add a backslash
 # (the \ character) at the end of the line and continue on the next.
-objlist = nrom init main bg player \
+objlist = fds init main bg player \
 pads ppuclear
 
 
@@ -26,11 +26,6 @@ CFLAGS65 =
 objdir = obj/nes
 srcdir = src
 imgdir = tilesets
-
-#EMU := "/C/Program Files/Nintendulator/Nintendulator.exe"
-EMU := fceux
-DEBUGEMU := ~/.wine/drive_c/Program\ Files\ \(x86\)/FCEUX/fceux.exe
-# other options for EMU are start (Windows) or gnome-open (GNOME)
 
 # Occasionally, you need to make "build tools", or programs that run
 # on a PC that convert, compress, or otherwise translate PC data
@@ -54,14 +49,9 @@ DOTEXE:=
 PY:=
 endif
 
-.PHONY: run debug all dist zip clean
+.PHONY: all dist zip clean 
 
-run: $(title).nes
-	$(EMU) $<
-debug: $(title).nes
-	$(DEBUGEMU) $<
-
-all: $(title).nes
+all: $(title).fds
 
 # Rule to create or update the distribution zipfile by adding all
 # files listed in zip.in.  Actually the zipfile depends on every
@@ -72,13 +62,13 @@ all: $(title).nes
 # makefile changes.
 dist: zip
 zip: $(title)-$(version).zip
-$(title)-$(version).zip: zip.in $(title).nes README.md CHANGES.txt $(objdir)/index.txt
+$(title)-$(version).zip: zip.in $(title).fds README.md CHANGES.txt $(objdir)/index.txt
 	zip -9 -u $@ -@ < $<
 
 # Build zip.in from the list of files in the Git tree
 zip.in:
 	git ls-files | grep -e "^[^.]" > $@
-	echo $(title).nes >> $@
+	echo $(title).fds >> $@
 	echo zip.in >> $@
 
 $(objdir)/index.txt: makefile
@@ -91,8 +81,8 @@ clean:
 
 objlistntsc = $(foreach o,$(objlist),$(objdir)/$(o).o)
 
-map.txt $(title).nes: nrom128.cfg $(objlistntsc)
-	$(LD65) -o $(title).nes -m map.txt -C $^
+map.txt $(title).fds: fds.cfg $(objlistntsc)
+	$(LD65) -o $(title).fds -m map.txt -C $^
 
 $(objdir)/%.o: $(srcdir)/%.s $(srcdir)/nes.inc $(srcdir)/global.inc
 	$(AS65) $(CFLAGS65) $< -o $@

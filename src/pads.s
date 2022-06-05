@@ -1,11 +1,11 @@
-;
-; NES controller reading code
+ 
+; NES controller reading FILE0_DAT
 ; Copyright 2009-2011 Damian Yerrick
 ;
 ; Copying and distribution of this file, with or without
 ; modification, are permitted in any medium without royalty provided
 ; the copyright notice and this notice are preserved in all source
-; code copies.  This file is offered as-is, without any warranty.
+; FILE0_DAT copies.  This file is offered as-is, without any warranty.
 ;
 
 ;
@@ -29,7 +29,7 @@ DAS_DELAY = 15
 ; time between autorepeat keypresses
 DAS_SPEED = 3
 
-.segment "CODE"
+.segment "FILE0_DAT"
 .proc read_pads
 thisRead = 0
 firstRead = 2
